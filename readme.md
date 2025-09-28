@@ -43,13 +43,13 @@ view binding- so view binding me jaise hi hum .xml file banate hai thik usi sama
         android:layout_width="wrap_content"                                                            @Override
         android:layout_height="wrap_content"                                                           protected void onCreate(Bundle savedInstanceState) {
         android:text="First Text"                                                                           super.onCreate(savedInstanceState
-        android:textSize="20sp"/>                                                                           mainxml = ActivityMainBinding.inflate(getLayoutInflate())
-                                                                                                            setContentView(mainxml.getRoot())
-    <TextView                                                                                               
-        android:id="@+id/textTwo"                                                                           mainxml.t1.setText("Hello from findViewById!");
-        android:layout_width="wrap_content"                                                                 mainxml.t2.setText("This is the second text view!");
-        android:layout_height="wrap_content"                                                              }  
-        android:text="Second Text"                                                                     }   
-        android:textSize="20sp"                                                                          
-        android:layout_marginTop="10dp"/>                                                            
+        android:textSize="20sp"/>                                                                           
+                                                                                                           // aisa karne se hum apne ActivityMainBinding class ko apne MainActivity.java aur main_activity.xml dono file se connect kar dete hai
+    <TextView                                                                                               mainxml = ActivityMainBinding.inflate(getLayoutInflate())
+        android:id="@+id/textTwo"                                                                           setContentView(mainxml.getRoot())
+        android:layout_width="wrap_content"                                                                 
+        android:layout_height="wrap_content"                                                                mainxml.t1.setText("Hello from findViewById!");
+        android:text="Second Text"                                                                          mainxml.t2.setText("This is the second text view!");
+        android:textSize="20sp"                                                                         }    
+        android:layout_marginTop="10dp"/>                                                             }
 </LinearLayout>
