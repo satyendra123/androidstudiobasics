@@ -25,4 +25,4 @@
         android:layout_marginTop="10dp"/>                                                             }
 </LinearLayout>
 
-Note- so jab hum aise karte hai to 
+Note- so isme hum .xml file banate hai usme text me id dete hai. aur MainActivity.java file me ek object banate hai textview ka aur xml me se findViewById() iske madad se bind kar dete hai xml ki id ko find karke. aur so jab bhi hum change karte hai run time me apne text ko to humara xml bhi change hoga. so ye purana concept tha. isme problem ye hota tha ki har view ke liye hume MainActivity me variable banana padta tha aur usko .xml ki id ke sath reference dena padta tha. so ye tarika sahi nahi tha aur bhut sara variables banane ki wajah se humara app bhi slow ho jata tha
