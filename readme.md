@@ -31,25 +31,25 @@ Ex-2 modified version using viewBinding
 view binding- so view binding me jaise hi hum .xml file banate hai thik usi samay ek binding class ban jata hai andar hi andar jise ki hum dekh nahi sakte hai ise hum kewal MainActivity file ke andar hi access kar sakte hai. view binding ke liye hume buildFeatures{viewBining true} karna padta hai build.gradle file ke andar.
 
 
- <?xml version="1.0" encoding="utf-8"?>                                                       package com.example.findviewexample;
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"                        import android.os.Bundle;
-    android:orientation="vertical"                                                              import android.widget.TextView;
-    android:padding="20dp"                                                                      import androidx.appcompat.app.AppCompatActivity;
+ <?xml version="1.0" encoding="utf-8"?>                                              package com.example.findviewexample;
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"                import android.os.Bundle;
+    android:orientation="vertical"                                                      import android.widget.TextView;
+    android:padding="20dp"                                                              import androidx.appcompat.app.AppCompatActivity;
     android:layout_width="match_parent"                      
-    android:layout_height="match_parent">                                                          public class MainActivity extends AppCompatActivity {
+    android:layout_height="match_parent">                                               public class MainActivity extends AppCompatActivity {
 
-    <TextView                                                                                          ActivityMainBinding mainxml[;
+    <TextView                                                                              ActivityMainBinding mainxml[;
         android:id="@+id/textOne"                                                                      
-        android:layout_width="wrap_content"                                                            @Override
-        android:layout_height="wrap_content"                                                           protected void onCreate(Bundle savedInstanceState) {
-        android:text="First Text"                                                                           super.onCreate(savedInstanceState
+        android:layout_width="wrap_content"                                                @Override
+        android:layout_height="wrap_content"                                               protected void onCreate(Bundle savedInstanceState) {
+        android:text="First Text"                                                             super.onCreate(savedInstanceState
         android:textSize="20sp"/>                                                                           
-                                                                                                           // aisa karne se hum apne ActivityMainBinding class ko apne MainActivity.java aur main_activity.xml dono file se connect kar dete hai
-    <TextView                                                                                               mainxml = ActivityMainBinding.inflate(getLayoutInflate())
-        android:id="@+id/textTwo"                                                                           setContentView(mainxml.getRoot())
+                                                                                           // aisa karne se hum apne ActivityMainBinding class ko apne                                                                                                                   // MainActivity.java aur main_activity.xml dono file se connect kar dete hai                                                                                                                                                                                     
+    <TextView                                                                                       mainxml = ActivityMainBinding.inflate(getLayoutInflate())
+        android:id="@+id/textTwo"                                                                   setContentView(mainxml.getRoot())
         android:layout_width="wrap_content"                                                                 
-        android:layout_height="wrap_content"                                                                mainxml.t1.setText("Hello from findViewById!");
-        android:text="Second Text"                                                                          mainxml.t2.setText("This is the second text view!");
-        android:textSize="20sp"                                                                         }    
-        android:layout_marginTop="10dp"/>                                                             }
+        android:layout_height="wrap_content"                                                        mainxml.t1.setText("Hello from findViewById!");
+        android:text="Second Text"                                                                  mainxml.t2.setText("This is the second text view!");
+        android:textSize="20sp"                                                                }    
+        android:layout_marginTop="10dp"/>                                                   }
 </LinearLayout>
