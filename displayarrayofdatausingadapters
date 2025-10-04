@@ -75,3 +75,113 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
+EX-2 with using the adapters
+
+step-1 activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <GridView
+        android:id="@+id/gdview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="2"
+        android:horizontalSpacing="8dp"
+        android:verticalSpacing="8dp"
+        android:gravity="center"
+        android:stretchMode="columnWidth"/>
+
+
+</RelativeLayout>
+
+step-2 ui_view_one.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="4dp">
+
+    <TextView
+        android:id="@+id/textviewone"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_foreground"/>
+</LinearLayout>
+
+step-3 MainActivity.java
+
+package com.example.arrayadapter;
+
+import android.os.Bundle;
+import android.widget.GridView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    String[] animals_arr = {"satyam", "satyendra", "sandhya", "vikas", "sandeep"};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        GridView gridView = findViewById(R.id.gdview);
+        MyAdapterOne adapterOne = new MyAdapterOne(this, animals_arr);
+        gridView.setAdapter(adapterOne);
+    }
+}
+
+step-4 MyAdapterone.java
+package com.example.arrayadapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+public class MyAdapterOne extends BaseAdapter {
+
+    Context context;
+    String[] data;
+    LayoutInflater inflater;
+
+    public MyAdapterOne(Context context, String[] data) {
+        this.context = context;
+        this.data = data;
+        this.inflater = LayoutInflater.from(context);
+    }
+
+    @Override
+    public int getCount() {
+        return data.length;
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return data[position];
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        // Reuse view if possible
+        convertView = inflater.inflate(R.layout.ui_view_one, parent, false);
+        TextView textView = convertView.findViewById(R.id.textviewone);
+        textView.setText(data[position]);
+
+        return convertView;
+    }
+}
