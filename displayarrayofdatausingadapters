@@ -1,0 +1,77 @@
+Note-1 sabse pahle hum ye samjhne ki kosis karte hai ki jab humare pass adapters nahi tha to us samay ye sari chize kaise work kiya karti thi. aur ab ye sari chize kaise work karti hai
+
+  Ex-1 without using the adapters
+  
+  step-1 activity_main.xml
+  <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:rowCount="auto"
+        android:padding="8dp"
+        android:alignmentMode="alignMargins"
+        android:rowOrderPreserved="false"
+        android:useDefaultMargins="true">
+    </GridLayout>
+
+</ScrollView>
+
+step-2 ui_view_one.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="4dp">
+
+    <TextView
+        android:id="@+id/textviewone"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:gravity="center"
+        android:background="@drawable/ic_launcher_foreground"
+        android:textColor="#000000"
+        android:textSize="16sp"/>
+</LinearLayout>
+
+
+step-3 MainActivity.java
+package com.example.arrayadapter;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.GridLayout;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    String[] animals_arr = {"Satyam", "Satyendra", "Sandhya", "Vikas", "Sandeep"};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        GridLayout gridLayout = findViewById(R.id.gridLayout);
+
+        LayoutInflater inflater = LayoutInflater.from(this);
+
+        for (String name : animals_arr) {
+            View itemView = inflater.inflate(R.layout.ui_view_one, gridLayout, false);
+            TextView textView = itemView.findViewById(R.id.textviewone);
+            textView.setText(name);
+
+            gridLayout.addView(itemView);
+        }
+    }
+}
